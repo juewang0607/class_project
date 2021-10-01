@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring Tweets</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>Spring Tweets</h1>
+        <ul>
+            <li v-for="person in persons" @click="showPerson(person)">{{person.name}}</li>
+        </ul>
+
+        <div class="details" v-show="showDetails">
+            <h2>Person Details</h2>
+            <p>
+                <a :href="'https://www.twitter.com/' + selectedPerson.id" target="_blank">
+                    @{{ selectedPerson.id }} - {{ selectedPerson.name }}
+                </a>
+            </p>
+        </div>
+    </div>
+
+
+
+    <script>
+        const apiURL = "http://localhost:8080/api/v1/person";
+        new Vue({
+            el: '#app',
+            data() {
+               return {
+                   persons: [],
+                   showDetails: false,
+                   selectedPerson: ''
+               }
+            },
+            methods: {
+                showPerson(person) {
+                    this.selectedPerson = person;
+                    this.showDetails = true;
+                }
+            },
+            created() {
+               fetch(apiURL)
+                .then(response => {
+                    return response.json();
+                })
+                .then(persons => {
+                    this.persons = persons;
+                })
+            },
+        });
+    </script>
+
+</body>
+</html>

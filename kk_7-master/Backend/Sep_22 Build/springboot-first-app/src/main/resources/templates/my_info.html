@@ -1,0 +1,13 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>My Dashboard</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <p th:text="'Hello, ' + ${email} + '! Welcome to your dashboard'" />
+    <p th:text="'Name: ' + ${Name} + ' '" />
+    <p th:text="'Phone Number: ' + ${PhoneNumber} + ' '" />
+    <p th:text="'Address: ' + ${Address} + ' '" />
+</body>
+</html>

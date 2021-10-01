@@ -1,0 +1,168 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>My Homepage</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>My Information</title>
+	<script> 
+        var id = ${ID}; 
+    </script>
+	<link href="/css/lib/bootstrap.css" rel="stylesheet"></script>
+	<style type="text/css">
+		.show-img{
+			width: 249px;
+			height: 186px;
+		}
+		.img-card{
+			max-width: 249px;
+			min-width: 249px;
+			/*height: 186px;*/
+		}
+		.nav-bar{
+			margin-bottom: 30px;
+			margin-top: 30px;
+		}
+		.price-tag{
+			/*margin: auto;*/
+			border: 2px solid grey;
+			border-radius: 5px;
+			padding: 2px;
+			min-width: 60px;
+		}
+	</style>
+</head>
+<body>
+
+<!-- top title bar -->
+	<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+		<h3 class="mr-md-auto font-weight-normal">Tenant Direct</h3>
+		<nav class="mr-md-3">
+		<a class="p-2 text-dark" th:href="@{|/home/${Email}|}">My Homepage</a>
+			<a class="p-2 text-dark" th:href="@{|/home/${Email}/my_info|}">My Information</a>
+			<a class="p-2 text-dark" th:href="@{|/home/${Email}/my_purchases|}">My Purchases</a>
+			<a class="p-2 text-dark" th:href="@{|/home/${Email}/my_listings|}">My Listings</a>
+		</nav>
+	</div>
+ <p th:text="'Chatting as: ' + ${email}" />
+ <p th:text="'Chatting with: ' + ${recipient}" />
+
+
+  <table>
+    <tr>
+      <td colspan="2">
+        <body onload="connect() ">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <textarea readonly="true" rows="10" cols="80" id="log"></textarea>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <input type="text" size="51" id="msg" placeholder="Message" />
+        <button type="button" onclick="send();">Send</button>
+      </td>
+    </tr>
+  </table>
+  
+  <tr th:if="${Users_List.empty}">
+            <td colspan="2"> No Users to chat with</td>
+        </tr>
+        <tr th:each="user : ${Users_List}">
+        <td><span th:text="${user.fName}"> Name </span></td>
+        	<td><span th:text="${user.lName}"> Name </span></td>
+            <td><span th:text="${user.email}"> Email </span></td>
+	<td><a href="somepage.html" th:href="@{|/home/${Email}/messages/${user.email}|}">Chat with User</a></td>
+	<br>
+        </tr>
+    </tbody>
+
+	        </table>
+  
+  
+  
+</body>
+
+
+
+<script th:inline="javascript">
+/*<![CDATA[*/
+
+var ws;
+
+function connectBoth(){
+    connect();
+    connectOtherPerson();
+    }
+
+
+
+
+
+function connect() {
+
+    var username = [[${Email}]];
+    var recipient = [[${Recipient}]];
+    //var url = "ws://coms-309-kk-07.cs.iastate.edu:8080/chat/" + username + "/" + recipient;
+    var url = "ws://localhost:8080/chat/" + username + "/" + recipient;
+
+    ws = new WebSocket(url);
+
+    ws.onmessage = function(event) { // Called when client receives a message from the server
+        console.log(event.data)
+        console.log("test")
+
+        // display on browser
+        var log = document.getElementById("log");
+        log.innerHTML += "" + event.data + "\n";
+    };
+
+    ws.onopen = function(event) { // called when connection is opened
+        var log = document.getElementById("log");
+        //log.innerHTML += "" + event.currentTarget.url + "\n";
+    };
+}
+
+
+
+
+function connectOtherPerson() {
+
+    var username = [[${Email}]];
+    var recipient = [[${Recipient}]];
+    //var url = "ws://coms-309-kk-07.cs.iastate.edu:8080/chat/" + username + "/" + recipient;
+    var url = "ws://localhost:8080/chat/" + recipient + "/" + username;
+    
+
+
+
+    ws1 = new WebSocket(url);
+
+    ws1.onmessage = function(event) { // Called when client receives a message from the server
+        console.log(event.data)
+        console.log("test")
+
+        // display on browser
+        var log = document.getElementById("log");
+        //log.innerHTML += "message from server: " + event.data + "\n";
+    };
+
+    ws1.onopen = function(event) { // called when connection is opened
+        var log = document.getElementById("log");
+        //log.innerHTML += "Connected to " + event.currentTarget.url + "\n";
+    };
+}
+
+
+
+
+function send() {  // this is how to send messages
+    var content = document.getElementById("msg").value;
+    ws.send(content);
+}
+
+/*]]>*/
+</script>
+
+</html>

@@ -1,0 +1,40 @@
+stages:
+- mavenbuild
+- maventest
+- autodeploy
+
+maven-build:
+stage: mavenbuild
+tags:
+- shell
+script:
+- cd Backend/sprintboot-first-app vFinal
+- mvn package –B
+#Note –B means batch mode
+
+
+maven-test:
+stage: maventest
+tags:
+- shell
+script:
+- cd Backend/sprintboot-first-app vFinal
+- mvn test
+artifacts:
+paths:
+- Spring/target/*.jar
+
+
+
+autoDeploy: 
+stage: autodeploy
+tags: 
+- shell
+script:
+- cd Backend/sprintboot-first-app vFinal
+- mvn package –B
+- sudo mv target/*.jar /target/web-demo.jar
+- sudo systemctl stop web-demo
+- sudo systemctl start web-demo
+
+

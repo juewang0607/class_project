@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add CSS and JS to Thymeleaf</title>
+    <link th:href="@{/css/register_style.css}" rel="stylesheet" />
+</head>
+<head>
+<script>
+function validateForm(){
+var x=document.forms["myForm"]["email"].value;
+var atpos=x.indexOf("@");
+var dotpos=x.lastIndexOf(".");
+if (x==null || x==""){
+  alert("email cannot be empty");
+  return false;
+ }
+
+else if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length){
+		alert("Please enter a valid email address!");
+  		return false;
+}
+var d=document.forms["myForm"]["password"].value;
+if (d==null || d==""){
+  alert("Password cannot be empty!");
+  return false;
+  }
+else if(d.length<6){
+	alert("Password should have 6 characters minimum!");
+  	return false;
+}
+var y=document.forms["myForm"]["FirstName"].value;
+if (y==null || y==""){
+  alert("FirstName cannot be empty!");
+  return false;
+  }
+var z=document.forms["myForm"]["LastName"].value;
+if (z==null || z==""){
+  alert("LastName cannot be empty!");
+  return false;
+  }
+var a=document.forms["myForm"]["PhoneNumber"].value;
+if (a==null || a==""){
+  alert("PhoneNumber cannot be empty!");
+  return false;
+  }
+var b=document.forms["myForm"]["Address"].value;
+if (b==null || b==""){
+  alert("Address cannot be empty!");
+  return false;
+  }
+}
+</script>
+</head>
+<body>
+<div class="loginbox">
+<form name="myForm"  onsubmit="return validateForm()" method="post">
+    <h1>Register Here</h1>
+          Email : <input type="text" name="email" />
+        Password : <input type="password" name="password" /> 
+        FirstName : <input type="text" name="FirstName" />
+        LastName : <input type="text" name="LastName" />
+    PhoneNumber : <input type="text" name="PhoneNumber" />
+    Address : <input type="text" name="Address" />
+        <input type="submit" />
+    </form>
+ </div>
+</body>
+
+</html>

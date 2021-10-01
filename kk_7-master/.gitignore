@@ -1,0 +1,42 @@
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# Eclipse #
+.settings
+.project
+.classpath
+.studio
+target
+
+# Apple # 
+.DS_Store
+
+# Intellij #
+.idea
+*.iml
+*.log
+
+# VSCode
+.vscode
+
+# logback
+logback.out.xml
+
+furniture-web/backend/src/main/resources/public/
+furniture-web/backend/target
+furniture-web/frontend/dist/
+furniture-web/frontend/node/
+furniture-web/frontend/node_modules/
+furniture-web/frontend/npm-debug.log
+furniture-web/frontend/target
+furniture-web/frontend/test-output
+furniture-web/frontend/tests/e2e/reports
+furniture-web/frontend/tests/unit/coverage
+furniture-web/frontend/yarn-error.log
+furniture-web/frontend/yarn.lock
+furniture-web/security/target/
+furniture-web/selenium-debug.log

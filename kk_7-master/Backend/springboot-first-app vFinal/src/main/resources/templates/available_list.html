@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>My Information</title>
+	<script> 
+        var id = ${ID}; 
+    </script>
+	<link href="/css/lib/bootstrap.css" rel="stylesheet"></script>
+	<style type="text/css">
+		.show-img{
+			width: 249px;
+			height: 186px;
+		}
+		.img-card{
+			max-width: 249px;
+			min-width: 249px;
+			/*height: 186px;*/
+		}
+		.nav-bar{
+			margin-bottom: 30px;
+			margin-top: 30px;
+		}
+		.price-tag{
+			/*margin: auto;*/
+			border: 2px solid grey;
+			border-radius: 5px;
+			padding: 2px;
+			min-width: 60px;
+		}
+	</style>
+</head>
+<body>
+	<!-- top title bar -->
+	<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+		<h3 class="mr-md-auto font-weight-normal">Tenant Direct</h3>
+		<nav class="mr-md-3">
+		<a class="p-2 text-dark" th:href="@{|/home/${Email}|}">My Homepage</a>
+			<a class="p-2 text-dark" th:href="@{|/home/${Email}/my_info|}">My Information</a>
+			<a class="p-2 text-dark" th:href="@{|/home/${Email}/my_purchases|}">My Purchases</a>
+			<a class="p-2 text-dark" th:href="@{|/home/${Email}/my_listings|}">My Listings</a>
+		</nav>
+	</div>
+
+	<!-- main page body -->
+	<div class="container">
+		<!-- navigation bar -->
+		<nav class="navbar navbar-expand-lg navbar-light bg-light nav-bar">
+			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+		      <a class="nav-link Disabled" href="#">Sort By <span class="sr-only">(current)</span></a>
+		      <li class="nav-item active">
+		        <a class="nav-link" href="#">Date<span class="sr-only">(current)</span></a>
+		      </li>
+		      <li class="nav-item">
+		        <a class="nav-link" href="#">Price</a>
+		      </li>
+		      <li class="nav-item">
+		        <a class="nav-link" href="#">Apartment</a>
+		      </li>
+		    </ul>
+			<form class="form-inline my-2 my-lg-0">
+		      <input class="form-control mr-sm-2" type="search" placeholder="type here" aria-label="Search">
+		      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+		    </form>
+		</nav>
+
+		<!-- one row, containing 3 items -->
+		<div class="card-deck mb-3 text-center justify-content-between">
+			<div class="card mb-4 img-card">
+				<img src="" class="card-img-top show-img" alt="">
+				<div class="card-body d-flex justify-content-around">
+				<span class="label label-default price-tag"><p th:text="'$' + ${Price}" /></span>
+				<span class="label label-default price-tag"><p th:text="${Title}" /></span>
+				
+				<a href="somepage.html" th:href="@{|view_item/${ID}|}">View</a>
+				</div>
+			</div>
+			
+			
+			
+			<div class="card mb-4 img-card">
+				<img src="" class="card-img-top show-img" alt="">
+				<div class="card-body d-flex justify-content-around">
+					<span class="label label-default price-tag">price</span>
+					<button type="button" class="btn btn-secondary">detail</button>
+				</div>
+			</div>
+			
+			
+			<div class="card mb-4 img-card">
+				<img src="" class="card-img-top show-img" alt="">
+				<div class="card-body d-flex justify-content-around">
+					<span class="label label-default price-tag">price</span>
+					<button type="button" class="btn btn-secondary">detail</button>
+				</div>
+			</div>
+			
+			
+		</div>
+
+		<!-- one row, containing 3 items -->
+		<div class="card-deck mb-3 text-center justify-content-between">
+			<div class="card mb-4 img-card">
+				<img src="" class="card-img-top show-img" alt="">
+				<div class="card-body d-flex justify-content-around">
+					<span class="label label-default price-tag">price</span>
+					<button type="button" class="btn btn-secondary">detail</button>
+				</div>
+			</div>
+			<div class="card mb-4 img-card">
+				<img src="" class="card-img-top show-img" alt="">
+				<div class="card-body d-flex justify-content-around">
+					<span class="label label-default price-tag">price</span>
+					<button type="button" class="btn btn-secondary">detail</button>
+				</div>
+			</div>
+			<div class="card mb-4 img-card">
+				<img src="" class="card-img-top show-img" alt="">
+				<div class="card-body d-flex justify-content-around">
+					<span class="label label-default price-tag">price</span>
+					<button type="button" class="btn btn-secondary">detail</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- one row, containing 3 items -->
+		<div class="card-deck mb-3 text-center justify-content-between">
+			<div class="card mb-4 img-card">
+				<img src="" class="card-img-top show-img" alt="">
+				<div class="card-body d-flex justify-content-around">
+					<span class="label label-default price-tag">price</span>
+					<button type="button" class="btn btn-secondary">detail</button>
+				</div>
+			</div>
+			<div class="card mb-4 img-card">
+				<img src="" class="card-img-top show-img" alt="">
+				<div class="card-body d-flex justify-content-around">
+					<span class="label label-default price-tag">price</span>
+					<button type="button" class="btn btn-secondary">detail</button>
+				</div>
+			</div>
+			<div class="card mb-4 img-card">
+				<img src="" class="card-img-top show-img" alt="">
+				<div class="card-body d-flex justify-content-around">
+					<span class="label label-default price-tag">price</span>
+					<button type="button" class="btn btn-secondary">detail</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- navigation bar -->
+		<div class="d-flex justify-content-end">		
+			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+				prev
+			</button>
+		    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+			    next
+			</button>	
+		</div>
+
+	</div>
+</body>
+</html>

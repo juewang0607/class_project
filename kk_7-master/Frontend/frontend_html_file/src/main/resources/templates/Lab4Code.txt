@@ -1,0 +1,29 @@
+/cle
+/PREP7 			! THIS COMMAND WILL LET YOU ENTER THE PREPROCESSOR
+MP,ex,1,70e9
+MP,prxy,1,.3
+ET,1,SHELL181     	! THE ELEMENT TYPE 1 IS SHELL #281
+Sectype,1,SHELL	
+SECDATA,.001
+Rectng,0,.5,0,.1 ! Rectangle (at origin) with length .5 m and height .1 m (500 by 100 cm)
+Cyl4,.1,.05,.015 ! create rectangle at (.1,.05)
+RPR4,3,.25,.05,.01155,90 ! create triangle at (.250,.05)
+Rpr4,5,.35,.05,.025,18 ! create prentagon at (.350,.05) and tip it 18 degrees to match orientation from diagram
+Asba, 1,2
+Numcmp,all
+Asba, 3,1
+Numcmp,all
+Asba,2,1
+Dl,4,,all
+Sfl,2,press,-1000 ! Make a 1000N/m pressure load on line 2
+Aatt,1,,1,,1
+Amesh,all
+FINISH			! FINISH THE PREPROCESSOR
+/SOLU			! ENTER SOLUTION PHASE
+SOLVE			! SOLVE THE PROBLEM
+/POST1			! ENTER POST PROCESSING
+SET,1                                  ! READ RESULTS FROM FIRST SET
+PLDISP,1		! PLOT DISPLACEMENT WITH OPTION 1=ORIGINAL+DISPLACED MODEL
+/DSCALE,1,1		! SCALE THE DISPLACEMENT TO SHOW TRUE SCALE
+PLNSOL,U,SUM		! CONTOUR PLOT DISPLACEMENT SUM
+PLNSOL,S,EQV		! CONTOUR PLOT VON MISES STRESS

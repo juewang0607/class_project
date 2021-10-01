@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Show User Infomation</title>
+	<script src="jquery-3.5.1.min.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			var content = 'The information of all users are as follows:\n';
+			var name = 'Bob';
+			var address = '123 Good Street';
+			content = content + name + ', ' + address;
+			$('#all_user_information').text(content);
+		})
+	</script>
+</head>
+<body>
+	<p id="all_user_information"></p>
+</body>
+</html>

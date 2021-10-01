@@ -1,0 +1,42 @@
+<html>
+<head>
+<title>First Web Application</title>
+</head>
+<head>
+<script>
+function validateForm(){
+var y=document.forms["myForm"]["FirstName"].value;
+if (y==null || y==""){
+  alert("firstname cannot be empty");
+  return false;
+  }
+var z=document.forms["myForm"]["LastName"].value;
+if (z==null || z==""){
+  alert("lastname cannot be empty");
+  return false;
+  }
+var a=document.forms["myForm"]["PhoneNumber"].value;
+if (a==null || a==""){
+  alert("phonenumber cannot be empty");
+  return false;
+  }
+var b=document.forms["myForm"]["Address"].value;
+if (b==null || b==""){
+  alert("Address cannot be empty");
+  return false;
+  }
+}
+</script>
+</head>
+<body>
+    <font color="red">${errorMessage}</font>
+<form name="myForm"  onsubmit="return validateForm()" method="post">
+        FirstName : <input type="text" name="FirstName" />
+        LastName : <input type="text" name="LastName" />
+	PhoneNumber : <input type="text" name="PhoneNumber" />
+	Address : <input type="text" name="Address" />
+
+        <input type="submit" />
+    </form>
+</body>
+</html>

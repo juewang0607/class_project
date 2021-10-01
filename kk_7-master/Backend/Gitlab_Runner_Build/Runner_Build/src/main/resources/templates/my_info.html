@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>My Homepage</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>My Information</title>
+	<script> 
+        var id = ${ID}; 
+    </script>
+	<link href="/css/lib/bootstrap.css" rel="stylesheet"></script>
+	<style type="text/css">
+		.show-img{
+			width: 249px;
+			height: 186px;
+		}
+		.img-card{
+			max-width: 249px;
+			min-width: 249px;
+			/*height: 186px;*/
+		}
+		.nav-bar{
+			margin-bottom: 30px;
+			margin-top: 30px;
+		}
+		.price-tag{
+			/*margin: auto;*/
+			border: 2px solid grey;
+			border-radius: 5px;
+			padding: 2px;
+			min-width: 60px;
+		}
+	</style>
+</head>
+<body>
+
+<!-- top title bar -->
+	<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+		<h3 class="mr-md-auto font-weight-normal">Tenant Direct</h3>
+		<nav class="mr-md-3">
+			<a class="p-2 text-dark" th:href="@{|/home/${Email}|}">My Homepage</a>
+			<a class="p-2 text-dark" th:href="@{|/home/${Email}/my_info|}">My Information</a>
+			<a class="p-2 text-dark" th:href="@{|/home/${Email}/my_purchases|}">My Purchases</a>
+			<a class="p-2 text-dark" th:href="@{|/home/${Email}/my_listings|}">My Listings</a>
+		</nav>
+	</div>
+    <p th:text="'Hello, ' + ${email} + '! Welcome to your dashboard'" />
+    <p th:text="'Name: ' + ${Name} + ' '" />
+    <p th:text="'Phone Number: ' + ${PhoneNumber} + ' '" />
+    <p th:text="'Address: ' + ${Address} + ' '" />
+
+
+
+ 
+    
+</body>
+</html>

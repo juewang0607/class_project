@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add CSS and JS to Thymeleaf</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+
+</head>
+<head>
+<script>
+function validateForm(){
+var x=document.forms["myForm"]["email"].value;
+var atpos=x.indexOf("@");
+var dotpos=x.lastIndexOf(".");
+if (x==null || x==""){
+  alert("Email cannot be empty");
+  return false;
+ }
+
+else if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length){
+		alert("Please enter a valid email address!");
+  		return false;
+}
+var d=document.forms["myForm"]["password"].value;
+if (d==null || d==""){
+  alert("Password cannot be empty!");
+  return false;
+  }
+}
+</script>
+
+</head>
+<body>
+
+
+ <div class="loginbox">
+                <h1>Login Here</h1>
+    <form name="myForm"  onsubmit="return validateForm()" method="post">
+                    <p>Email address</p>
+                    <input autocomplete = "off" type="text" name="email" />
+                    <p>Password</p>
+                    <input type="password" name="password" /> 
+                    <input type="submit" />
+                    <a href="/login/forgot-password">Lost your password?</a><br>
+                    <a href="/register/tenant">Register as Tenant</a><br>
+                    <a href="/register/landlord">Register as Landlord</a><br>
+                    <a href="/register/admin">Register as Admin</a>
+                </form>
+            </div>
+
+
+
+
+
+</body>
+
+
+</html>
